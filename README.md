@@ -48,10 +48,10 @@ An Example List with Embedded Items:
 
 ## [Link to Commented First Draft Schema](db.js) (!!!!!!)
 
-## [Wireframes]((documentation/wireFrame.jpg))
+## [Wireframes][documentation/wireFrame.jpg]
 
 
-## [Site Map](documentation/siteMap.jpg)
+## [Site Map][documentation/siteMap.jpg]
 
 ## User Stories or Use Cases
 
