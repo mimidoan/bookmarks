@@ -4,43 +4,49 @@ const express = require("express"),
 
 const app = express();
 
+app.set('view engine', 'hbs');
+
 app.use(express.static('public'))
 
+app.get("/", (req, res) => {
+  res.redirect("/home");
+});
+
 app.get("/home", (req, res) => {
-  res.render("home.hbs");
+  res.render("index");
 });
 
 app.get("/login", (req, res) => {
-  res.render("login.hbs");
+  res.render("login");
 });
 
 app.get("/register", (req, res) => {
-  res.render("register.hbs");
+  res.render("register");
 });
 
 // app.post("/register", (req, res) => {
 //   // issue a redirect after registration
 //   // redirect to a confirmation page or straight to feed
-//   res.redirect("register.hbs");
+//   res.redirect("register");
 // });
 
 app.get("/feed", (req, res) => {
-  res.render("feed.hbs");
+  res.render("feed");
 });
 
 app.get("/confirm", (req, res) => {
-  res.render("confirm.hbs");
+  res.render("confirm");
 });
 
 app.get("/user", (req, res) => {
-  res.render("user.hbs");
+  res.render("user");
 });
 
 app.get("/create", (req, res) => {
-  res.render("create.hbs");
+  res.render("create");
 });
 
 
 
 
-app.listen(3000);
+app.listen(8080);

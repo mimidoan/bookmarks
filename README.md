@@ -2,7 +2,6 @@ The content below is an example project proposal / requirements document. Replac
 
 Longer ToDos:
   - write Schemas in DB.js
-  - site map - name of pages and where they flow to
   - skeleton express app
 
 
@@ -77,17 +76,14 @@ An Example List with Embedded Items:
     * A library for creating drag and drop events
 * (2 points) [Foundation](https://foundation.zurb.com/)
     * Frontend Framework to make application shine!!
-* Less framework for CSS
+* (2 Points) Less framework for CSS
+* (1200 points) Learn Graph Theory and Make a Social Network
 
 
 
 ## [Link to Initial Main Project File](app.js)
 
-(___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
 
 ## Annotations / References Used
 
-(___TODO__: list any tutorials/references/etc. that you've based your code off of_)
-
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+- None yet!
