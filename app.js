@@ -48,5 +48,5 @@ app.get("/create", (req, res) => {
 
 
 
-
-app.listen(5000);
+// will work locally and bind to port on heroku
+app.listen(process.env.PORT || 5000);
