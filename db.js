@@ -41,4 +41,6 @@ mongoose.model('Bookmark', Bookmark);
 // mongoose.model('User', User);
 
 // connection string to local instance of MongoDBa
-mongoose.connect('mongodb://localhost/bookmarks');
+// mongoose.connect('mongodb://localhost/bookmarks');
+
+mongoose.connect('mongodb://mimi:notsecure@ds255265.mlab.com:55265/bookmarks');
