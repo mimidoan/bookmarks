@@ -1,0 +1,26 @@
+
+p {
+ color: red;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.thing {
+  padding: none !important;
+  margin: 5em;
+}
+
+.nav-link {
+  margin: auto 0em;
+  padding: 0em !important;
+}
+
+.container {
+  /*margin: 4em;*/
+}
+
+h3 {
+  
+}

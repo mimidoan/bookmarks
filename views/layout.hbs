@@ -3,17 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>Bookmarked</title>
+    <!-- CDN for Bootstrap included -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   </head>
   <body>
-    <h1><a href="/home">Bookmarked</a></h1>
-    <nav>
-      <a href="/login">login</a>
-      <a href="/register">register</a>
-      <a href="/feed">feed</a>
-      <a href="/confirm">confirm</a>
-      <a href="/user">user</a>
-      <a href="/create">create</a>
+
+    <div class="col-xs-1 center-block text-center">
+      <h1 class="display-1"><a href="/home">Bookmarked</a></h1>
+    </div>
+
+    <nav class='navbar navbar-toggleable-md navbar-light bg-faded'>
+      <div class="container ">
+        <!-- <div class="navbar-nav mr-auto mt-2 mt-lg-0 thing"> -->
+          <span class="nav-item active"> <a href="/login" class="nav-link">login</a> </span>
+          <span class="nav-item active "> <a href="/register" class="nav-link">register</a></span>
+          <span class="nav-item active"> <a href="/feed" class="nav-link">feed</a></span>
+          <span class="nav-item active"><a href="/confirm" class="nav-link">confirm</a></span>
+          <span class="nav-item active"><a href="/user" class="nav-link">user</a></span>
+          <span class="nav-item active"><a href="/create" class="nav-link">create</a></span>
+      </div>
+    <!-- </div> -->
     </nav>
+
+
+
     {{{body}}}
   </body>
 </html>

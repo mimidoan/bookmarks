@@ -1,1 +1,14 @@
-<h3>Create </h3>
+<h3 class="display-3">Create </h3>
+
+<ul>
+  {{#each Bookmark as |b|}}
+  <a href={{b.url}}><li> {{b.name}} </li></a>
+  {{/each}}
+</ul>
+
+<form class="" action="" method="post">
+  <input type="text" name="url" placeholder="URL">
+  <input type="text" name="name" placeholder="NAME">
+  <input type="submit" name="" value="GIMME A MARK">
+  <!-- <input type="text" name="folder" placeholder="FOLDER"> -->
+</form>
