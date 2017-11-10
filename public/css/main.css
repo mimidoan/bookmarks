@@ -1,6 +1,6 @@
 
 p {
- color: red;
+ color: #003B6F;
 }
 
 a {
@@ -22,5 +22,11 @@ a {
 }
 
 h3 {
-  
+
+}
+
+#dropzone {
+  height: 20em;
+  width: 40em;
+  background-color: #FF9D79;
 }

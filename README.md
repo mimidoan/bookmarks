@@ -72,9 +72,11 @@ An Example List with Embedded Items:
     * valid passwords, links, etc
 * (4 points) [DataTransfer API](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
     * This API will help me get data from drag and drop objects
+* (2 points) [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)
+        * This API will help me get data from drag and drop objects
 * (3 points) [Interact.js](http://interactjs.io/)
     * A library for creating drag and drop events
-* (2 points) [Foundation](https://foundation.zurb.com/)
+* (2 points) [Bootstrap](https://getbootstrap.com/
     * Frontend Framework to make application shine!!
 * (2 Points) Less framework for CSS
 * (1200 points) Learn Graph Theory and Make a Social Network
@@ -86,4 +88,7 @@ An Example List with Embedded Items:
 
 ## Annotations / References Used
 
-- None yet!
+- [Guide for using mongo and deploying to Heroku](https://forum.freecodecamp.org/t/guide-for-using-mongodb-and-deploying-to-heroku/19347)
+- [MDN Guide to the DataTransfer API](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
+- [Shiffman Tutorial for Drag and Drop](https://www.youtube.com/watch?v=o4UmGrPst_c)
+- [Yet Another Drag and Drop Tutorial](https://blog.codezero.xyz/building-interactive-elements-with-html-and-javascript-interact-js-drag-drop/)
