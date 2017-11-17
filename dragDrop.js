@@ -12,9 +12,9 @@ function drop(event) {
     eventent.target.appendChild(document.getElementById(data));
 }
 
-
-module.exports = {
-  allowDrop: allowDrop,
-  drag: drag,
-  drop: drop
-};
+// 
+// module.exports = {
+//   allowDrop: allowDrop,
+//   drag: drag,
+//   drop: drop
+// };

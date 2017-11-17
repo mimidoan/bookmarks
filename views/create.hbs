@@ -1,17 +1,39 @@
 <h3 class="display-3">Create </h3>
 
+
+
+<ul>
+  {{#each Folder as |f|}}
+  <a href={{b.url}}><li> {{b.name}} </li></a>
+  {{/each}}
+</ul>
+
 <ul>
   {{#each Bookmark as |b|}}
   <a href={{b.url}}><li> {{b.name}} </li></a>
   {{/each}}
 </ul>
 
+
+
+
 <form class="" action="" method="post">
-  <input type="text" name="url" placeholder="URL">
+  Folder:
+  <input type="text" name="folder" placeholder="Folder Name">
+  <input type="submit" name="" value="New Folder">
+
+</form>
+
+<form class="" action="" method="post">
+  Bookmarks: <input type="text" name="url" placeholder="URL">
   <input type="text" name="name" placeholder="NAME">
   <input type="submit" name="" value="GIMME A MARK">
   <!-- <input type="text" name="folder" placeholder="FOLDER"> -->
 </form>
+
+<!-- Do a search where we find By Folder - display all folders -->
+
+
 
 
 <!--===========================================

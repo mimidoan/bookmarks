@@ -21,6 +21,7 @@ app.set('view engine', 'hbs');
 
 // register Mongoose models in app.js
 const Bookmark = mongoose.model('Bookmark');
+const Folder = mongoose.model('Folder');
 
 /* ======================================================
     Middle Ware
@@ -96,6 +97,13 @@ app.post('/create', (req, res) => {
         res.redirect('/create');
     });
   }
+
+  if(req.body['folder']) {
+
+  }
+
+
+
 });
 
 
