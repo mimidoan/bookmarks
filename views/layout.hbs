@@ -32,20 +32,6 @@
     {{{body}}}
 
 
-    <script type="text/javascript" src="dragDrop.js">
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
-    function drag(event) {
-        event.dataTransfer.setData("text", event.target.id);
-    }
-
-    function drop(event) {
-        event.prevententDefault();
-        var data = event.dataTransfer.getData("text");
-        eventent.target.appendChild(document.getElementById(data));
-    }
-    </script>
+    <script src='bundle.js'></script>
   </body>
 </html>

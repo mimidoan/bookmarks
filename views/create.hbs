@@ -1,13 +1,15 @@
 <h3 class="display-3">Create </h3>
 
 
-
+<h1> Folders </h1>
 <ul>
   {{#each Folder as |f|}}
-  <a href={{b.url}}><li> {{b.name}} </li></a>
+    <li> {{f.name}} </li>
   {{/each}}
 </ul>
 
+
+<h1> Bookmarks </h1>
 <ul>
   {{#each Bookmark as |b|}}
   <a href={{b.url}}><li> {{b.name}} </li></a>
@@ -15,18 +17,18 @@
 </ul>
 
 
-
-
 <form class="" action="" method="post">
   Folder:
-  <input type="text" name="folder" placeholder="Folder Name">
-  <input type="submit" name="" value="New Folder">
+  <input type="text" name="newFolder" placeholder="Folder Name">
+  <input type="submit" placeholder="New Folder">
 
 </form>
 
 <form class="" action="" method="post">
-  Bookmarks: <input type="text" name="url" placeholder="URL">
+  Bookmarks:
+  <input type="text" name="url" placeholder="URL">
   <input type="text" name="name" placeholder="NAME">
+  <input type="text" name="folder" placeholder="Folder Name">
   <input type="submit" name="" value="GIMME A MARK">
   <!-- <input type="text" name="folder" placeholder="FOLDER"> -->
 </form>
@@ -44,5 +46,4 @@ get data from urls
   js code to client side
 =============================================-->
 
-<div id="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)"> <p>Drop Zone!</p> </div>
-<br>
+<!-- <div id="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)"></div> -->

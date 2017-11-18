@@ -11,7 +11,7 @@ const express = require('express'),
   mongoose = require('mongoose'),
   db = require('./db.js');
 
-const drop = require("./dragDrop.js");
+// const drop = require("./bundle.js");
 
 
 const app = express();
@@ -32,9 +32,6 @@ app.use(express.static('public'))
 
 // Express Body Parser
 app.use(express.urlencoded({ extended: false }));
-
-
-
 
 
 
@@ -81,24 +78,44 @@ app.get('/user', (req, res) => {
 
 app.get('/create', (req, res) => {
 
+  /*
+  Ok Bookmarks are meant to be passed into folders, and each Bookmark is meant to have a reference to
+  a folder, but I'm still pretty confused about how to Mongoose populate - will get it figured out
+  in the next week
+
+  */
+  Folder.find(function(err, fold, count){
+    folderContainer = fold;
+  });
+
   Bookmark.find(function(err, each, count) {
     res.render('create', {
-      Bookmark: each
-    });
+        Folder:folderContainer, Bookmark: each
+      });
+
   });
+
+
+
 });
 
 app.post('/create', (req, res) => {
   if(req.body['url']) {
     const newBookmark = new Bookmark({
       url: req.body.url,
-      name: req.body.name
+      name: req.body.name,
+      folder: req.body.folder
     }).save(function(err, newSave, count){
         res.redirect('/create');
     });
   }
 
-  if(req.body['folder']) {
+  if(req.body['newFolder']) {
+    const newFolder = new Folder({
+      name: req.body.newFolder
+    }).save(function(err, newSave, count){
+      res.redirect('/create');
+    })
 
   }
 

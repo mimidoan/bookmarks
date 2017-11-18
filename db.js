@@ -11,23 +11,15 @@ const URLSlugs = require('mongoose-url-slugs');
 //   lists:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Folder' }]
 // });
 
-// group of Bookmarks are a folder (can also be single Bookmark)
-// * Name of the Bookmark and the associated URL
-//
 const Bookmark = new mongoose.Schema({
   url: {type: String, required: true},
-  name: {type: String, required: true}
-  folder: {type: mongoose.Schema.Types.ObjectId, ref:'Folder'},
+  name: {type: String, required: true},
+  folder: {type: String, required: true}
+  // {type: mongoose.Schema.Types.ObjectId, ref:'Folder'}
   // createdAt: {type: Date, required: true},
   // quantity: {type: Number, min: 1, required: true}, /* probably doesn't make sense, what was I thinking?? */
 });
 
-/*
-
-query population
-
-
-*/
 
 // Categorization of bookmarks into Folder
 // * each Folder must have a related user
@@ -37,8 +29,23 @@ const Folder = new mongoose.Schema({
   name: {type: String, required: true},
   // createdAt: {type: Date, required: true},
   // lastUpdate: {type: Date, required: true},
-  bookmarks: [Bookmark];
+  bookmarks: [Bookmark]
 });
+
+
+// group of Bookmarks are a folder (can also be single Bookmark)
+// * Name of the Bookmark and the associated URL
+//
+
+
+/*
+
+query population
+
+
+*/
+
+
 
 // create Slugs for both BookMarks and Folders
 Bookmark.plugin(URLSlugs('name'));
