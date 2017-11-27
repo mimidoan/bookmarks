@@ -1,6 +1,4 @@
-// function allowDrop(ev) {
-//     ev.preventDefault();
-// }
+
 //
 // function drag(ev) {
 //     ev.dataTransfer.setData("text", ev.target.id);
@@ -20,6 +18,9 @@ document.addEventListener("DOMContentLoaded", main);
 
 
 // }
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
 function drop(evt) {
     evt.stopPropagation();
@@ -27,11 +28,3 @@ function drop(evt) {
     var imageUrl = evt.dataTransfer.getData('URL');
     alert(imageUrl);
 }
-
-
-//
-// module.exports = {
-//   allowDrop: allowDrop,
-//   drag: drag,
-//   drop: drop
-// };
