@@ -11,7 +11,8 @@ const bcrypt   = require('bcrypt-nodejs');
 const User = new mongoose.Schema({
   username: String,
   password: String,
-  // bookmarks:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bookmark' }]
+  email: String,
+  bookmarks:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bookmark' }]
 });
 
 User.methods.generateHash = function(password) {
@@ -20,7 +21,7 @@ User.methods.generateHash = function(password) {
 
 // checking if password is valid
 User.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, password);
+    return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model('User', User);

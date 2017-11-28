@@ -97,15 +97,15 @@ module.exports = function(app, passport) {
     res.render('login');
   });
 
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/confirm', // redirect to the secure profile section
+    failureRedirect : '/login', // redirect back to the signup page if there is an error
+    failureFlash : true // allow flash messages
+}));
+
   app.get('/register', (req, res) => {
     res.render('register', { message: req.flash('registerMessage') });
   });
-
-  // app.post('/register', (req, res) => {
-  //   // issue a redirect after registration
-  //   // redirect to a confirmation page or straight to feed
-  //   res.redirect('register');
-  // });
 
   app.post('/register', passport.authenticate('local-signup', {
         successRedirect : '/confirm', // redirect to the secure profile section
