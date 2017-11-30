@@ -1,6 +1,16 @@
 <h3>Login </h3>
 
 
+
+{{logIn}}
+
+{{#if message}}
+    {{#each message as |m|}}
+      <h1>{{m}}</h1>
+    {{/each}}
+{{/if}}
+
+
 <form class="" action="" method="post">
   <input type="text" name="username" value="" placeholder="Username">
   <input type="text" name="password" value="" placeholder="Password">

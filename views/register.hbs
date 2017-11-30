@@ -1,7 +1,9 @@
 <h3>Register </h3>
 
 
-<h5>{{message}}</h5>
+{{#if message}}
+<h1>{{message}}</h1>
+{{/if}}
 
 <form class="" action="" method="post">
   <input type="email" name="email" value="" placeholder="Email" required>

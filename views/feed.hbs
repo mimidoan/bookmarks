@@ -1,1 +1,28 @@
 <h3>Feed </h3>
+
+{{#each AllBookmarks as |mark|}}
+
+  <h1>{{@key}}</h1>
+    <ul>
+      {{#each mark as |m|}}
+        {{#each m as |final|}}
+          <a href='https://www.{{final.url}}'> <li>{{final.name}}</li></a>
+        {{/each}}
+      {{/each}}
+    </ul>
+
+
+{{/each}}
+
+
+
+
+
+<!--
+<form class="" action="" method="post">
+  Bookmarks:
+  <input type="text" name="url" placeholder="URL">
+  <input type="text" name="name" placeholder="NAME">
+  <input type="text" name="folder" placeholder="Folder Name">
+  <input type="submit" name="" value="GIMME A MARK">
+</form> -->

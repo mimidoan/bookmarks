@@ -1,126 +1,175 @@
-const mongoose = require('mongoose'),
-bookmark = require('./models/bookmark'),
-dbConfig = require('../config/database'),
-user = require('./models/user.js');
+const mongoose = require("mongoose"),
+  bookmark = require("./models/bookmark"),
+  dbConfig = require("../config/database"),
+  user = require("./models/user.js");
 
 mongoose.connect(dbConfig.url);
-const Bookmark = mongoose.model('Bookmark');
-// const Folder = mongoose.model('Folder');
+const Bookmark = mongoose.model("Bookmark");
+const User = mongoose.model("User");
+
+/*
+*
+* TODO:
+*     - add filter by user
+*     - add search by name of bookmark
+**/
 
 module.exports = function(app, passport) {
-
   /* ======================================================
       Regular Route Handlers
   ====================================================== */
 
-  app.get('/', (req, res) => {
-    res.redirect('/home');
+  app.get("/", (req, res) => {
+    res.redirect("/home");
   });
 
-  app.get('/home', (req, res) => {
-    res.render('index');
+  app.get("/home", (req, res) => {
+    res.render("index");
   });
 
-  app.get('/feed', (req, res) => {
-    res.render('feed');
+  app.get("/feed", isLoggedIn, (req, res) => {
+
+
+    User.find(function(err, all) {
+      // each Username will be the Key
+      const userBookmarks = {};
+
+      // For Each user create an empty Object
+      all.forEach(function(user) {
+        // console.log("the user is: ", user);
+
+        // if there is no Key, create one
+        if (!userBookmarks[user.username]) {
+          userBookmarks[user.username] = [];
+        }
+
+        // console.log(
+        //   "user key created",
+        //   user.username,
+        //   userBookmarks[user.username]
+        // );
+
+        // Add each bookmark object to the userBookmarks object under the user's name
+        user["bookmarks"].forEach(function(mark) {
+          // console.log("each bookmark", mark);
+          Bookmark.find({ _id: mark }, function(err, result) {
+            console.log("Bookmark Query RESULT", result);
+            userBookmarks[user.username].push(result);
+
+            // console.log("ADDED TO", user.username);
+          });
+        });
+      });
+
+      // console.log('USER MARKS: ', userBookmarks);
+
+      res.render("feed", {
+        AllBookmarks: userBookmarks
+      });
+    });
   });
 
-  app.get('/confirm', (req, res) => {
-    res.render('confirm');
+  app.get("/confirm", isLoggedIn, (req, res) => {
+    // console.log('user', req.user.username);
+    // console.log('session', req.session);
+    // console.log('passport', req.session.passport);
+    // console.log('user', req.session.passport.user);
+    res.render("confirm", { user: req.user.username });
   });
 
-  app.get('/user', (req, res) => {
-    res.render('user');
+  app.get("/search", isLoggedIn, (req, res) => {
+    Bookmark.find({name: req.query.name}, function(err, result) {
+      console.log(result);
+      res.render("search", {bookmark: result});
+    });
   });
 
   /*================================================
     Handlers for Creating new Bookmarks
   =================================================*/
 
-  app.get('/create', (req, res) => {
+  app.get("/create", isLoggedIn, (req, res) => {
+    // console.log('from create', req.user.username);
+    // console.log('session', req.session);
 
-    /*
-    Ok Bookmarks are meant to be passed into folders, and each Bookmark is meant to have a reference to
-    a folder, but I'm still pretty confused about how to Mongoose populate - will get it figured out
-    in the next week
-
-    */
-    // Folder.find(function(err, fold, count){
-    //   folderContainer = fold;
-    // });
-
-    //Folder:folderContainer,
-
-    Bookmark.find(function(err, each, count) {
-      res.render('create', {
-           Bookmark: each
-        });
-
+    Bookmark.find(function(err, each) {
+      res.render("create", {
+        Bookmark: each
+      });
     });
-
-
-
   });
 
-  app.post('/create', (req, res) => {
-    if(req.body['url']) {
+  app.post("/create", (req, res) => {
+    // if the user submits then we a add to our database
+    if (req.body["url"]) {
       const newBookmark = new Bookmark({
         url: req.body.url,
         name: req.body.name,
         folder: req.body.folder
-      }).save(function(err, newSave, count){
-          res.redirect('/create');
+      }).save(function(err, newSave) {
+        if (err) {
+          // TODO: send a flash message
+        }
+        // // find user by their ObjectId then push id of new bookmark to bookmarks array
+        User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { bookmarks: newSave } },
+          function(err, result) {
+            console.log("result", result);
+            res.redirect("/create");
+          }
+        );
       });
     }
-
-    if(req.body['newFolder']) {
-      const newFolder = new Folder({
-        name: req.body.newFolder
-      }).save(function(err, newSave, count){
-        res.redirect('/create');
-      })
-
-    }
-
-
-
   });
-
-
-
   /* ======================================================
       Handlers for Passport
   ====================================================== */
 
-
-  app.get('/login', (req, res) => {
-    res.render('login');
+  app.get("/login", (req, res) => {
+    res.render("login", {message: req.flash("loginMessage"), logIn: req.flash('must-log')});
   });
 
-  app.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/confirm', // redirect to the secure profile section
-    failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
-}));
+  app.post(
+    "/login",
+    passport.authenticate("local-login", {
+      successRedirect: "/confirm", // redirect to the secure profile section
+      failureRedirect: "/login", // redirect back to the signup page if there is an error
+      failureFlash: true // allow flash messages
+    })
+  );
 
-  app.get('/register', (req, res) => {
-    res.render('register', { message: req.flash('registerMessage') });
+  app.get("/register", (req, res) => {
+
+    res.render("register", { message: req.flash("registerMessage")});
   });
 
-  app.post('/register', passport.authenticate('local-signup', {
-        successRedirect : '/confirm', // redirect to the secure profile section
-        failureRedirect : '/register', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
+  app.post(
+    "/register",
+    passport.authenticate("local-signup", {
+      successRedirect: "/confirm", // redirect to the secure profile section
+      failureRedirect: "/register", // redirect back to the signup page if there is an error
+      failureFlash: true // allow flash messages
+    })
+  );
 
-}
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+};
 
+/* ======================================================
+    Middleware for checking whether user is logged in
+====================================================== */
 function isLoggedIn(req, res, next) {
+  // if user is authenticated in the session, carry on
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash('must-log', 'You must log in to access this page');
+    // console.log('LOG IN: ', req.flash('must-log'));
+    res.redirect("/login");
+  }
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+  // if they aren't redirect them to the login page and display a flash message
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
 }

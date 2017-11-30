@@ -9,10 +9,10 @@ const bcrypt   = require('bcrypt-nodejs');
 // * ues Passport to authenticate users: username and password
 // * the bookmark folders associate with their names
 const User = new mongoose.Schema({
-  username: String,
-  password: String,
-  email: String,
-  bookmarks:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bookmark' }]
+  username: {type: String, required: true, unique: true},
+  password: {type: String, required: true, unique: true},
+  email: {type: String, required: true, unique: true},
+  bookmarks:  [{type: mongoose.Schema.Types.ObjectId, ref: 'Bookmark' }]
 });
 
 User.methods.generateHash = function(password) {
