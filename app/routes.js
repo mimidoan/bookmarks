@@ -24,6 +24,10 @@ module.exports = function(app, passport) {
   });
 
   app.get("/home", (req, res) => {
+
+    User
+
+
     res.render("index");
   });
 
@@ -35,27 +39,21 @@ module.exports = function(app, passport) {
       const userBookmarks = {};
 
       // For Each user create an empty Object
-      all.forEach(function(user) {
-        // console.log("the user is: ", user);
-
+      all.map(function(user) {
         // if there is no Key, create one
         if (!userBookmarks[user.username]) {
           userBookmarks[user.username] = [];
         }
-
         // Add each bookmark object to the userBookmarks object under the user's name
-        user["bookmarks"].forEach(function(mark) {
-          // console.log("each bookmark", mark);
+        user["bookmarks"].map(function(mark) {
           Bookmark.find({ _id: mark }, function(err, result) {
             console.log("Bookmark Query RESULT", result);
             userBookmarks[user.username].push(result);
-
-            // console.log("ADDED TO", user.username);
           });
         });
-      });
 
-      // console.log('USER MARKS: ', userBookmarks);
+
+      });
 
       res.render("feed", {
         AllBookmarks: userBookmarks
@@ -154,15 +152,13 @@ module.exports = function(app, passport) {
     Middleware for checking whether user is logged in
 ====================================================== */
 function isLoggedIn(req, res, next) {
-  // if user is authenticated in the session, carry on
+  // if user is authenticated in the session, continue
   if (req.isAuthenticated()) {
     return next();
   } else {
+
+    // set flash message then redirect to login
     req.flash('must-log', 'You must log in to access this page');
-    // console.log('LOG IN: ', req.flash('must-log'));
     res.redirect("/login");
   }
-
-  // if they aren't redirect them to the login page and display a flash message
-
 }

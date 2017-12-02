@@ -66,9 +66,10 @@ An Example List with Embedded Items:
 
 ## Research Topics
 
-* (5 points) [Integrate user authentication](https://www.npmjs.com/package/passport-local)
+*  **implemented** (5 points) [Integrate user authentication](https://www.npmjs.com/package/passport-local)
     * I'm going to be using passport for user authentication
-* (3 points) Perform client side form validation using a JavaScript library
+* **implemented** (3 points) Perform client side form validation using a JavaScript library
+    * connect-flash module
     * valid passwords, links, etc
 * (4 points) [DataTransfer API](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer)
     * This API will help me get data from drag and drop objects
@@ -76,7 +77,7 @@ An Example List with Embedded Items:
         * This API will help me get data from drag and drop objects
 * (3 points) [Interact.js](http://interactjs.io/)
     * A library for creating drag and drop events
-* (2 points) [Bootstrap](https://getbootstrap.com/
+* **implemented** (2 points) [Bootstrap](https://getbootstrap.com/
     * Frontend Framework to make application shine!!
 * (2 Points) Less framework for CSS
 * (1200 points) Learn Graph Theory and Make a Social Network

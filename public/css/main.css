@@ -18,11 +18,27 @@ a {
   margin: 5em;
 }
 
+/*For hiding and showing certain nav elements*/
+.invisible {
+  display: none;
+}
+
+
 .nav-link {
   margin: auto 0em;
   padding: 0em !important;
 }
 
+#instructions {
+
+  margin: 3em;
+}
+
+#ele {
+  margin: 2em;
+  text-align: left;
+  list-style-type: disc;
+}
 
 #dropzone {
   height: 20em;
@@ -72,11 +88,8 @@ a {
   background-color: #B3E5FC;
 }
 
-.bookmarkContainer {
 
-
-}
-
+/*
 li {
   list-style-type: none;
-}
+}*/
