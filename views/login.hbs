@@ -1,18 +1,36 @@
-<h3>Login </h3>
 
 
 
-{{logIn}}
-
-{{#if message}}
-    {{#each message as |m|}}
-      <h1>{{m}}</h1>
-    {{/each}}
-{{/if}}
 
 
-<form class="" action="" method="post">
-  <input type="text" name="username" value="" placeholder="Username">
-  <input type="text" name="password" value="" placeholder="Password">
-  <input type="submit" name="" value="Login">
-</form>
+<center>
+<div class="container">
+<div class="col-sm-6 col-md-6">
+  <div class='formbg'>
+  <h3>Login</h3>
+
+
+  <div class="flash">{{logIn}} </div>
+
+  {{#if message}}
+      {{#each message as |m|}}
+        <div class="flash">{{m}}</div>
+      {{/each}}
+  {{/if}}
+
+  <form class="" action="" method="post">
+    <div class="form-group">
+    <input type="text" class="form-control" name="username" value="" placeholder="Username">
+  </div>
+
+    <div class="form-group">
+    <input type="text" class="form-control" name="password" value="" placeholder="Password">
+  </div>
+
+    <input type="submit" class="btn btn-primary" value="Login">
+  </form>
+</div>
+
+</div>
+</div>
+</center>

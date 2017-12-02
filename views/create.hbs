@@ -1,26 +1,41 @@
+
+<center>
+<div class="container">
+<div class="col-sm-6 col-md-6">
+<div class='formbg'>
+
 <h3 class="display-3">Create </h3>
-
-
 <h1> Bookmarks </h1>
-<ul>
+<!-- <ul> -->
   {{#each Bookmark as |b|}}
-  <a href={{b.url}}><li> {{b.name}} </li></a>
+  <a href={{b.url}}><div> {{b.name}} </div</a>
   {{/each}}
-</ul>
-
+<!-- </ul> -->
 
 <!-- <h1>Welcome to Bookmarks </h1> -->
 
 <form class="" action="" method="post">
-  Bookmarks:
-  <input type="text" name="url" placeholder="URL" required>
-  <input type="text" name="name" placeholder="NAME" required>
-  <input type="text" name="folder" placeholder="Folder Name" required>
-  <input type="submit" name="" value="GIMME A MARK">
+  <div class="form-group">
+  <input class="form-control" type="text" name="url" placeholder="URL" required>
+</div>
+
+  <div class="form-group">
+  <input class="form-control" type="text" name="name" placeholder="NAME" required>
+</div>
+
+  <div class="form-group">
+  <input class="form-control" type="text" name="folder" placeholder="Folder Name" required>
+</div>
+
+  <input type="submit" class="btn btn-primary" value="GIMME A MARK">
   <!-- <input type="text" name="folder" placeholder="FOLDER"> -->
 </form>
 
-<!-- Do a search where we find By Folder - display all folders -->
+</div>
+</div>
+</div>
+</center>
+
 
 
 

@@ -1,18 +1,44 @@
+
+<div class="container">
+
+
 <h3>Feed </h3>
+
+<div class="box">
+
 
 {{#each AllBookmarks as |mark|}}
 
-  <h1>{{@key}}</h1>
-    <ul>
-      {{#each mark as |m|}}
-        {{#each m as |final|}}
-          <a href='https://www.{{final.url}}'> <li>{{final.name}}</li></a>
+  <div class="outerProf">
+
+
+    <div class="profile">
+        <h1>{{@key}}</h1>
+
+        <div class="innerProfile">
+
+
+      <ul>
+        {{#each mark as |m|}}
+
+        <div class="bookmarkContainer">
+          {{#each m as |final|}}
+            <a href='https://www.{{final.url}}'> <li>{{final.name}}</li></a>
+          {{/each}}
+
+        </div>
         {{/each}}
-      {{/each}}
-    </ul>
 
+      </ul>
+      </div>
 
+      </div>
+      </div>
 {{/each}}
+
+</div>
+
+</div>
 
 
 

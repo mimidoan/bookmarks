@@ -1,13 +1,32 @@
+
+<center>
+<div class="container">
+<div class="col-sm-6 col-md-6">
+  <div class='formbg'>
 <h3>Register </h3>
 
 
 {{#if message}}
-<h1>{{message}}</h1>
+<div class="flash">{{message}}</div>
 {{/if}}
 
 <form class="" action="" method="post">
-  <input type="email" name="email" value="" placeholder="Email" required>
-  <input type="text" name="username" value="" placeholder="Username" required>
-  <input type="text" name="password" value="" placeholder="Password" required>
-  <input type="submit" name="" value="Sign Up">
+  <div class="form-group">
+  <input class="form-control" type="email" name="email" value="" placeholder="Email" required>
+</div>
+
+  <div class="form-group">
+  <input class="form-control" type="text" name="username" placeholder="Username" required>
+</div>
+
+  <div class="form-group">
+  <input class="form-control" type="text" name="password" value="" placeholder="Password" required>
+</div>
+  <input type="submit" class="btn btn-primary" value="Sign Up">
 </form>
+
+<div class='formbg'>
+
+</div>
+</div>
+</center>

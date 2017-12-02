@@ -43,12 +43,6 @@ module.exports = function(app, passport) {
           userBookmarks[user.username] = [];
         }
 
-        // console.log(
-        //   "user key created",
-        //   user.username,
-        //   userBookmarks[user.username]
-        // );
-
         // Add each bookmark object to the userBookmarks object under the user's name
         user["bookmarks"].forEach(function(mark) {
           // console.log("each bookmark", mark);
@@ -114,7 +108,7 @@ module.exports = function(app, passport) {
         User.findOneAndUpdate({ _id: req.session.passport.user }, { $push: { bookmarks: newSave } },
           function(err, result) {
             console.log("result", result);
-            res.redirect("/create");
+            res.redirect("/feed");
           }
         );
       });
@@ -138,7 +132,6 @@ module.exports = function(app, passport) {
   );
 
   app.get("/register", (req, res) => {
-
     res.render("register", { message: req.flash("registerMessage")});
   });
 

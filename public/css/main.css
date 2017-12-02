@@ -1,10 +1,16 @@
 
+
 p {
  color: #003B6F;
 }
 
 a {
   text-decoration: none !important;
+}
+
+.navbar {
+  width: 20em;
+  margin: 0 auto;
 }
 
 .thing {
@@ -17,16 +23,60 @@ a {
   padding: 0em !important;
 }
 
-.container {
-  /*margin: 4em;*/
-}
-
-h3 {
-
-}
 
 #dropzone {
   height: 20em;
   width: 40em;
   background-color: #FF9D79;
+}
+
+.container {
+  padding: 2em;
+  margin: 0 auto;
+}
+
+
+.formbg {
+  background-color: #CFD8DC;
+  padding: .5em;
+  border-radius: .5em;
+}
+
+
+/* Styling for flash message*/
+.flash {
+  color: #F44336;
+  padding: .5em;
+
+}
+
+.box {
+  padding: 1em;
+}
+
+.outerProf {
+  /*padding: 3em;*/
+}
+
+.profile {
+  padding: .5em;
+  margin: 2em;
+  background-color: #FFF176  ;
+  border-radius: .5em;
+  display: block;
+}
+
+.innerProfile {
+  margin-left: 1em;
+  border-radius: .5em;
+  background-color: #B3E5FC;
+}
+
+.bookmarkContainer {
+
+
+}
+
+li {
+  list-style-type: none;
 }

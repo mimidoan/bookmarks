@@ -3,8 +3,6 @@ const LocalStrategy = require("passport-local").Strategy;
 var User = require("../app/models/user");
 
 module.exports = function(passport) {
-  console.log("in function passport.js");
-
   // used to serialize the user for the session
   passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -44,7 +42,6 @@ module.exports = function(passport) {
 
 
             if (!user.validPassword(password)) {
-              console.log('$$$ done setting flash message');
               return done(
                 null,
                 false,
@@ -71,9 +68,7 @@ module.exports = function(passport) {
         passReqToCallback: true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
       },
       function(req, username, password, done) {
-        console.log("in local register function");
         if (username) {
-          console.log("if email", username);
           username = username.toLowerCase();
         }
         // Use lower-case e-mails to avoid case-sensitive e-mail matching
@@ -91,16 +86,15 @@ module.exports = function(passport) {
 
               // check to see if theres already a user with that email
               if (user) {
-                console.log("already user with email");
                 return done(
                   null,
                   false,
                   req.flash(
                     "registerMessage",
-                    "That email is already registered."
+                    "That email or username is already registered."
                   )
                 );
-              } else {
+              }else {
                 // create the user
                 const newUser = new User();
 

@@ -1,13 +1,29 @@
-<h3>User </h3>
+
+
+<center>
+<div class="container">
+<div class="col-sm-6 col-md-6">
+<div class='formbg'>
+<h3>Search</h3>
+
+<form class="" action="" method="GET">
+    <label>Search for a bookmark:</label>
+
+  <div class="form-group">
+  <input class="form-control" type="text" name="name" value="" required>
+</div>
+  <input class="btn btn-primary" type="submit" value="Search">
+</form>
+
+</div>
 
 {{#if bookmark}}
+  <h3>Results: </h3>
   {{#each bookmark as |b|}}
-    <h1>{{b.name}}</h1>
+    <a href='{{b.url}}'> <h1>{{b.name}}</h1></a>
   {{/each}}
 {{/if}}
 
-<form class="" action="" method="GET">
-  Search for a bookmark:
-  <input type="text" name="name" value="" required>
-  <input type="submit" value="Search">
-</form>
+</div>
+</div>
+</center>
