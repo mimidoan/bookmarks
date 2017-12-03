@@ -6,7 +6,6 @@ const mongoose = require("mongoose"),
 mongoose.connect(dbConfig.url);
 const Bookmark = mongoose.model("Bookmark");
 const User = mongoose.model("User");
-mongoose.Promise = global.Promise;
 
 module.exports = function(app, passport) {
 
@@ -21,15 +20,50 @@ module.exports = function(app, passport) {
   });
 
   app.get("/home", (req, res) => {
-    res.render("index");
+
+    // random rihanna gif
+    const random = [
+    "r1.jpg",
+    "r2.jpg",
+    "r3.jpg",
+    "r4.jpg",
+    "r5.jpg",
+    "r6.jpg",
+    "r7.jpg",
+    "r8.jpg",
+    "r9.jpg",
+    "r10.jpg"
+  ];
+
+  // random num from 0-9
+  const num = Math.floor(Math.random() * 10);
+
+  // map the '/img/' so that each image can be found in public directory
+  const imgLink = random.map(function(img) {
+    return '/img/' + img;
+  })
+
+    res.render("index", {pic: imgLink[num]});
   });
 
 
   // query for all bookmarks and display by latest posted
   app.get("/feed", isLoggedIn, (req, res) => {
     Bookmark.find().sort('-date').exec(function(err, result) {
+
+      const appended = result.map(function(each) {
+          let url = each.url;
+          // append http to each url so that it opens properly
+          if(!url.includes('http://') && !url.includes('https://')) {
+            url = 'http://' + url;
+            each.url = url;
+          }
+          return each;
+        });
+
+
       res.render("feed", {
-           AllBookmarks: result
+           AllBookmarks: appended
        });
     });
 
@@ -46,10 +80,23 @@ module.exports = function(app, passport) {
 
     if(req.query.search) {
       Bookmark.find({user: req.query.search}, function(err, result) {
+
+      const appended = result.map(function(each) {
+          let url = each.url;
+          // append http to each url so that it opens properly
+          if(!url.includes('http://') && !url.includes('https://')) {
+            url = 'http://' + url;
+            each.url = url;
+          }
+          return each;
+        });
+
+        // if no results are sound then set flash message
         if(result.length < 1) {
           req.flash('noneFound', 'No results were found for that Username');
         }
-        res.render("search", {bookmark: result, none: req.flash('noneFound')});
+
+        res.render("search", {bookmark: appended, user: req.query.search, none: req.flash('noneFound')});
       });
     } else {
         res.render("search");
@@ -75,7 +122,7 @@ module.exports = function(app, passport) {
       const newBookmark = new Bookmark({
         url: req.body.url,
         name: req.body.name,
-        user: req.user.username
+        user: req.user.username // auto set user from req.user property
       }).save(function(err, newSave) {
         if (err) {
           // set flash message
@@ -97,6 +144,8 @@ module.exports = function(app, passport) {
       Handlers for Passport
   ====================================================== */
 
+  /*  LOGIN */
+
   app.get("/login", (req, res) => {
     res.render("login", {message: req.flash("loginMessage"), logIn: req.flash('must-log')});
   });
@@ -104,11 +153,13 @@ module.exports = function(app, passport) {
   app.post(
     "/login",
     passport.authenticate("local-login", {
-      successRedirect: "/confirm", // redirect to the secure profile section
+      successRedirect: "/confirm", // redirect to confirm pg
       failureRedirect: "/login", // redirect back to the signup page if there is an error
       failureFlash: true // allow flash messages
     })
   );
+
+  /* REGISTER */
 
   app.get("/register", (req, res) => {
     res.render("register", { message: req.flash("registerMessage")});
@@ -117,12 +168,13 @@ module.exports = function(app, passport) {
   app.post(
     "/register",
     passport.authenticate("local-signup", {
-      successRedirect: "/confirm", // redirect to the secure profile section
+      successRedirect: "/confirm", // redirect to confirm pg
       failureRedirect: "/register", // redirect back to the signup page if there is an error
       failureFlash: true // allow flash messages
     })
   );
 
+    /*  LOGOUT */
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
@@ -134,10 +186,9 @@ module.exports = function(app, passport) {
 ====================================================== */
 function isLoggedIn(req, res, next) {
   // if user is authenticated in the session, continue
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated()) { // built in passport method
     return next();
   } else {
-
     // set flash message then redirect to login
     req.flash('must-log', 'You must log in to access this page');
     res.redirect("/login");

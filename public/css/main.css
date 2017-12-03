@@ -12,10 +12,6 @@ a {
   width: 20em;
   margin: 0 auto;
 }
-
-.thing {
-  padding: none !important;
-  margin: 5em;
 }
 
 /*For hiding and showing certain nav elements*/
@@ -30,7 +26,6 @@ a {
 }
 
 #instructions {
-
   margin: 3em;
 }
 
@@ -70,14 +65,16 @@ a {
   padding: 1em;
 }
 
+.image {
+  max-width: 50% !important;
+}
 
-/*.profile {
-  padding: .5em;
-  margin: 2em;
-  background-color: #FFF176  ;
+.imgContainer {
+  padding-left:.2em;
   border-radius: .5em;
-  display: block;
-}*/
+  background-color: black;
+}
+
 
 .innerProfile {
   padding-left: .5em;
@@ -91,8 +88,3 @@ a {
   margin: 1em;
   background-color: #FFF176 ;
 }
-
-/*
-li {
-  list-style-type: none;
-}*/
