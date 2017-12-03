@@ -4,13 +4,13 @@
 <div class="col-sm-6 col-md-6">
 <div class='formbg'>
 
-<h3 class="display-3">Create </h3>
-<h1> Bookmarks </h1>
-<!-- <ul> -->
+<h1> Add a Bookmark  </h1>
 
-<!-- </ul> -->
-
-<!-- <h1>Welcome to Bookmarks </h1> -->
+{{#if Err}}
+  <div class="flash">
+    {{Err}}
+  </div>
+{{/if}}
 
 <form class="" action="" method="post">
   <div class="form-group">
@@ -21,9 +21,6 @@
   <input class="form-control" type="text" name="name" placeholder="NAME" required>
 </div>
 
-  <div class="form-group">
-  <input class="form-control" type="text" name="folder" placeholder="Folder Name" required>
-</div>
 
   <input type="submit" class="btn btn-primary" value="Make a Bookmark">
 

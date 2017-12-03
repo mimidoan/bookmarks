@@ -7,7 +7,7 @@
 <h3>Search</h3>
 
 <form class="" action="" method="GET">
-    <label>Search for Bookmark by name:</label>
+    <label>Search for Bookmark by User:</label>
 
   <div class="form-group">
   <input class="form-control" type="text" name="name" value="" required>
@@ -20,8 +20,12 @@
 {{#if bookmark}}
   <h3>Results: </h3>
   {{#each bookmark as |b|}}
-    <a href='{{b.url}}'> <h1>{{b.name}}</h1></a>
+    <a href='{{b.url}}'> <h1>{{b.name}} {{b.none}}</h1></a>
   {{/each}}
+{{/if}}
+
+{{#if none}}
+  <h3>{{none}} </h3>
 {{/if}}
 
 </div>

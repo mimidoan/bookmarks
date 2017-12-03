@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: false }));
   Path to Passport config
 ====================================================== */
 
-app.use(session({ secret: 'rowrowrowyourboat',resave: true,
+app.use(session({ secret: 'rowrowrowyourboatgently',resave: true,
     saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions

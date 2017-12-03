@@ -70,24 +70,27 @@ a {
   padding: 1em;
 }
 
-.outerProf {
-  /*padding: 3em;*/
-}
 
-.profile {
+/*.profile {
   padding: .5em;
   margin: 2em;
   background-color: #FFF176  ;
   border-radius: .5em;
   display: block;
-}
+}*/
 
 .innerProfile {
-  margin-left: 1em;
+  padding-left: .5em;
   border-radius: .5em;
   background-color: #B3E5FC;
 }
 
+.bookmarkContainer {
+  padding-left: .5em;
+  border-radius: .5em;
+  margin: 1em;
+  background-color: #FFF176 ;
+}
 
 /*
 li {

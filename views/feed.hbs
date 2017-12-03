@@ -2,53 +2,22 @@
 <div class="container">
 
 
-<h3>Feed </h3>
+<h3 class='display-4'>Feed</h3>
 
 <div class="box">
 
-
-{{#each AllBookmarks as |mark|}}
-
-  <div class="outerProf">
-
-
-    <div class="profile">
-        <h1>{{@key}}</h1>
-
-        <div class="innerProfile">
-
-
-      <ul>
-        {{#each mark as |m|}}
-
-        <div class="bookmarkContainer">
-          {{#each m as |final|}}
-            <a href='https://www.{{final.url}}'> <li>{{final.name}}</li></a>
+  {{#each AllBookmarks as |final|}}
+    <div class="bookmarkContainer">
+      <div class="userPost">
+        <span class="small">
+          Posted by:
+        </span>
+          {{final.user}}
+      </div>
+        <ul class='list-unstyled innerProfile'>
+            <a href='{{final.url}}'> <li>{{final.name}}</li></a>
+        </ul>
+        </div>
           {{/each}}
 
-        </div>
-        {{/each}}
-
-      </ul>
-      </div>
-
-      </div>
-      </div>
-{{/each}}
-
 </div>
-
-</div>
-
-
-
-
-
-<!--
-<form class="" action="" method="post">
-  Bookmarks:
-  <input type="text" name="url" placeholder="URL">
-  <input type="text" name="name" placeholder="NAME">
-  <input type="text" name="folder" placeholder="Folder Name">
-  <input type="submit" name="" value="GIMME A MARK">
-</form> -->

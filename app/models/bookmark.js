@@ -6,15 +6,10 @@ const dbConfig = require('../../config/database');
 const Bookmark = new mongoose.Schema({
   url: {type: String, required: true},
   name: {type: String, required: true},
-  folder: {type: String, required: true},
-  // user: {type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-
-  // {type: mongoose.Schema.Types.ObjectId, ref:'Folder'}
-  // createdAt: {type: Date, required: true},
+  user: {type: String, required: true},
+  date: { type: Date, default: Date.now },
 });
 
 Bookmark.plugin(URLSlugs('name'));
-
-
 
 module.exports = mongoose.model('Bookmark', Bookmark);
