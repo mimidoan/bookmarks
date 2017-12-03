@@ -44,7 +44,7 @@ module.exports = function(passport) {
               return done(
                 null,
                 false,
-                req.flash('loginMessage', "Oops! Wrong password.")
+                req.flash('loginMessage', "Wrong password.")
               );
             } else {
               // success, return user

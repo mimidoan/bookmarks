@@ -13,9 +13,11 @@
           Posted by:
         </span>
           {{final.user}}
+
+          <span class='float-right right small'> {{final.timeCreated}} </span>
       </div>
-        <ul class='list-unstyled innerProfile'>
-            <a href='{{final.url}}'> <li>{{final.name}}</li></a>
+        <ul class='list-unstyled'>
+            <a href='{{final.url}}'> <li class='innerProfile'>{{final.name}}</li></a>
         </ul>
         </div>
           {{/each}}
